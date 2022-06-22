@@ -1,31 +1,18 @@
-import axios from 'axios';
-import { useEffect, useState } from 'react';
+import React from 'react'
+import Card from '../components/Card';
+import '../App.css'
 
-export const Home = () => {
 
-  const [items, setitems] = useState([])
 
-  const getItems = async() => {
-    const res = await axios.get('https://ecomerce-master.herokuapp.com/api/v1/item')
-    console.log(res);
-    setitems(res.data.slice(0, 20))
-  }
-
-  useEffect(() => {
-    getItems();
-  }, [])
-  
-
+function Home() {
   return (
-    <div>
-      <h4>hola</h4>
-      {items.map((item) => (
-        <div>
-          <div key={item._id}>{item.image}</div>
-          <p key={item._id}>{item.product_name}</p>
-        </div>
-
-      ))}
+    <div className='App-header container d-flex justify-content-center'>
+      <div className='row'>
+        <div className='col-md-4'></div> 
+          <Card/>
+      </div>
     </div>
   )
 }
+
+export default Home

@@ -3,7 +3,7 @@ import React from 'react'
 import './App.css';
 //import Cards from './components/Cards';
 import Header from './components/Header';
-import { Home } from './pages/Home';
+import Home from './pages/Home';
 
 export const App = () => {
   return(
