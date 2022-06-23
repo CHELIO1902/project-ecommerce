@@ -2,6 +2,8 @@ import React from 'react'
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import Card from './Card';
+//import Pagination from './Pagination/Pagination';
+
 
 /* export default function Cards() {
   const [items, setitems] = useState([])
@@ -58,6 +60,7 @@ const Cards = () => {
       {items.map((item) => (
         
       <Card item={item} loading={loading}/>
+      {/* <Pagination itemsPerPage={itemsPerPage} totalItems={items.length}/> */}
       ))}
     </div>
   )
