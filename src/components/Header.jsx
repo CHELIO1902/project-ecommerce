@@ -21,14 +21,14 @@ import { useEffect, useState } from 'react';
 
     const handleChange=e=>{
       setBusqueda(e.target.value);
-      filtrar(e.target.value);
+      filtered(e.target.value);
     }
     
-    const filtrar=(terminoBusqueda)=>{
-      var resultadosBusqueda=tablaUsuarios.filter((elemento)=>{
-        if(elemento.product_name.toString()(terminoBusqueda.toLowerCase())
+    const filtered=(searchTerm)=>{
+      var resultadosBusqueda=tablaUsuarios.filter((element)=>{
+        if(element.product_name.toString()(searchTerm.toLowerCase())
         ){
-          return elemento;
+          return element;
         }
       });
       setUsuarios(resultadosBusqueda);
