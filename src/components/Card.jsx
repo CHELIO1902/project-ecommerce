@@ -1,5 +1,9 @@
 
-function Card({item}) {
+function Card({item, loading}) {
+
+  if (loading) {
+    return <h2>Cargando...</h2>
+}
 
   return (
          <div className='card col-md-3' style={{border: '2px solid black', margin: '10px'}}>
