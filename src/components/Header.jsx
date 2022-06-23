@@ -1,21 +1,64 @@
 import React from 'react'
-import { Link } from "react-router-dom";
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 
-export default function Header() {
-  return (
-    <nav>
-      
-      <ul className="nav-links">
-        <Link to='/'>
-          <li>Home</li>
-        </Link>
 
-        <Link to='user-screen'>
-          <li>Items</li>
-        </Link>
+ function Header() {
+    const [items, setitems] = useState([])
 
-      </ul>
+    const getItems = async() => {
+      const res = await axios.get('https://ecomerce-master.herokuapp.com/api/v1/item')
+      console.log(res);
+      setitems(res.data.slice(0, 20))
+    }
 
-    </nav>
-  )
+    useEffect(() => {
+      getItems();
+    }, [])
+
+
+
+
+    const handleChange=e=>{
+      setBusqueda(e.target.value);
+      filtrar(e.target.value);
+    }
+    
+    const filtrar=(terminoBusqueda)=>{
+      var resultadosBusqueda=tablaUsuarios.filter((elemento)=>{
+        if(elemento.product_name.toString()(terminoBusqueda.toLowerCase())
+        ){
+          return elemento;
+        }
+      });
+      setUsuarios(resultadosBusqueda);
+    }
+
+
+    return (
+      <div>
+        <nav class="navbar navbar-expand-lg bg-light">
+          <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#" >Home</a>
+                  
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Products</a>
+                </li>
+
+              </ul>
+              <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+                <button class="btn btn-success" type="submit"
+                      onChange={handleChange}>Search</button>
+              </form>
+            </div>
+          </div>
+        </nav>
+      </div>
+    )
 }
+ export default Header
