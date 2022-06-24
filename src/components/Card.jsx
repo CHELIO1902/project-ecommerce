@@ -1,11 +1,21 @@
+import React from 'react';
 
-function Card({item, loading}) {
-
+const Card = ({items, loading}) => {
   if (loading) {
     return <h2>Cargando...</h2>
 }
 
-  return (
+return (
+  <ul className="List-group mb-4">
+    {items.map((item) => (
+      <li key={item.id} className="list-group-item">
+        {item.title}
+      </li>
+    ))}
+  </ul>
+);
+};
+/*   return (
          <div className='card col-md-3' style={{border: '2px solid black', margin: '10px'}}>
          <div className='card-body'>
            <img className='col-md-12' src={item.image} alt="img-costummer" />
@@ -16,6 +26,6 @@ function Card({item, loading}) {
          </div>
        </div>
   )
-}
+} */
 
 export default Card

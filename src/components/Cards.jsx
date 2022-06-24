@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import Card from './Card';
+import Pagination from './Pagination/Pagination';
 //import Pagination from './Pagination/Pagination';
 
 
@@ -33,7 +34,7 @@ const Cards = () => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(10);
+  const [itemsPerPage] = useState(10);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -55,16 +56,24 @@ const Cards = () => {
   const currentItems = items.slice(indexOfFirstItem, indexOfLastItem);
   console.log(currentItems);
 
+  // Change page
+  const paginate = pageNumber => setCurrentPage(pageNumber);
+
   return (
     <div>
-      {items.map((item) => (
-        
-      <Card item={item} loading={loading}/>
-      {/* <Pagination itemsPerPage={itemsPerPage} totalItems={items.length}/> */}
-      ))}
+              
+      <Card item={currentItems} loading={loading}/>
+      <Pagination
+      postsPerPage={itemsPerPage}
+      totalPosts={items.length}
+      paginate={paginate}
+      />
+      
     </div>
   )
-
+  
 };
 
 export default Cards;
+
+//<Pagination itemsPerPage={itemsPerPage} totalItems={items.length}/>
