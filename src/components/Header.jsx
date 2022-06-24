@@ -20,18 +20,18 @@ import { useEffect, useState } from 'react';
 
 
     const handleChange=e=>{
-      setBusqueda(e.target.value);
+      setSearch(e.target.value);
       filtered(e.target.value);
     }
     
     const filtered=(searchTerm)=>{
-      var resultadosBusqueda=tablaUsuarios.filter((element)=>{
+      var searchResults=getItems.filter((element)=>{
         if(element.product_name.toString()(searchTerm.toLowerCase())
         ){
           return element;
         }
       });
-      setUsuarios(resultadosBusqueda);
+      setUsuarios(searchResults);
     }
 
 
