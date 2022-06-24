@@ -1,14 +1,18 @@
+import './Card.css';
 
 function Card({item}) {
 
   return (
-         <div className='card col-md-3' style={{border: '2px solid black', margin: '10px'}}>
-         <div className='card-body'>
-           <img className='col-md-12' src={item.image} alt="img-costummer" />
-           <div  className=''>
-           <h4 className='card-title text-dark' key={item._id}>{item.product_name}</h4>
-           <p className='card-text text-primary'>{item.description}</p>
-           </div>
+        <div className='card bg-dark col animate__animated animate__pulse' style={{border: '2px solid black', margin: '10px'}}>
+          <div className="overflow">
+           <img className='card-img-top' src={item.image} alt="img-costummer" />
+          </div>
+          <div className='card-body text-light'>
+           <h4 className='card-title text-center'>{item.product_name}</h4>
+           <p className='card-text'>{item.description}</p>
+          <a href="#!" className="btn btn-outline-secondary rounded-0">
+            Comprar ya!
+          </a>
          </div>
        </div>
   )

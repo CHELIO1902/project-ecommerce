@@ -11,7 +11,7 @@ export const App = () => {
       <Header/>
       <Routes>
 
-        <Route
+        <Route 
         path='/'
         element={
           <Home/>

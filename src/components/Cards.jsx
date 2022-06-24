@@ -17,10 +17,11 @@ export default function Cards() {
   }, [])
 
   return (
-    <div>
+    <div className='d-flex flex-wrap justify-content-evenly'>
       {items.map((item) => (
-        
-      <Card item={item}/>
+         <div className='row col-md-3'>
+             <Card item={item}/>
+       </div>
       ))}
     </div>
   )
